@@ -5,6 +5,7 @@ import { useWindowSize } from "@vueuse/core";
 const { width } = useWindowSize();
 interface propsType {
   bgColor?: string;
+  textColor?: string;
   dark?: boolean;
   title: string;
   content: string;
@@ -14,7 +15,10 @@ interface propsType {
 const props = defineProps<propsType>();
 
 const bgColorComputed = computed(() => {
-  return props.bgColor ? `${props.bgColor}` : "#ffffff";
+  return props.bgColor ? props.bgColor : "#ffffff";
+});
+const textColorComputed = computed(() => {
+  return props.textColor ? props.textColor : "#000";
 });
 const darkMode = computed(() => {
   return props.dark ? true : false;
@@ -42,8 +46,9 @@ const padding = computed(() => {
     >
       <div class="text-[#C2C2C2] text-[36px] flex items-center">
         <span
-          class="text-[#000000] text-lg pr-2.5 before:block before:absolute before:h-[5px] before:w-[22px] before:rounded-3xl before:bottom-[-4px] relative inline-block"
+          class="text-lg pr-2.5 before:block before:absolute before:h-[5px] before:w-[22px] before:rounded-3xl before:bottom-[-4px] relative inline-block"
           :class="darkMode ? 'before:bg-[#ffffff]' : 'before:bg-[#603EBE]'"
+          :style="{ color: textColorComputed }"
           >0{{ props.index }}</span
         >{{ props.title }}
       </div>

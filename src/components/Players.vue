@@ -23,7 +23,8 @@ const listData = [
   {
     title: "GROWTH",
     content: "Save your time, recruit proper athlets for your team.",
-    bgColor: "#5E3DB3",
+    bgColor: "#090C35",
+    textColor: "#8F6BE8",
     dark: true,
   },
 ];
@@ -90,6 +91,7 @@ const padding = computed(() => {
         :dark="item.dark"
         :title="item.title"
         :content="item.content"
+        :textColor="item.textColor"
         :index="index + 1"
       />
     </div>
